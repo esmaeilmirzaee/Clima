@@ -12,8 +12,8 @@ import CoreLocation
 class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     
     // Constants
-    let WEATHER_URL = ""
-    let APP_ID = ""
+    let WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather"
+    let APP_ID = "894f130231441d5e5b0c37596bc79c58"
     
     //TODO: declare instance variables here
     let locationManager = CLLocationManager()
@@ -29,7 +29,28 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
     }
     
     //MARK: - Networking
+    
+    //MARK: - UI update
+    
+    //MARK: - Location manager delegate methods
+    //didUpdateLocation method
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if (locations[locations.count - 1]).horizontalAccuracy > 0 {
+            locationManager.stopUpdatingLocation()
+            print("Long: \(locations[locations.count - 1].coordinate.longitude); Lat: \(locations[locations.count - 1].coordinate.latitude)")
+        }
+        
+    }
+    //didFailWithError method
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error)
+        cityLabel.text = "Location's unavailable 😫"
+    }
+    //MARK: - Change city delegate methods
+    //userEnteredANewCityName method
+    //Prepare for segue method
 }

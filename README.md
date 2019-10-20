@@ -44,3 +44,12 @@ The entire process to create current application is as follows:
       </dict>
     </dict>
   ```
+14. write function `didUpdateLocations`
+  * check last location in `locations` variable
+  * if it owns higher value than 0 then get 'longitute' and 'latetitude' variable
+  * stopUpdatingLocation()
+15. write function `didFailWithError`
+  - print error
+  - inform user by updating cityLabel with 'Location's unavailable'
+16. call `startUpdatingLocation` function in `viewDidLoad` function
+17. 
