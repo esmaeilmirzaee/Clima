@@ -29,16 +29,18 @@ The entire process to create current application is as follows:
   13.1. add `Privacy - Location When In Use Description`
   13.2. add `Privacy - Location Usage Discription` 
   13.3. we use [Open Weather Map](openweathermap.org) via `http` add the following
-  ` <key>NSAppTransportSecurity</key>`
-  `  <dict>`
-  `    <key>NSExceptionDomains</key>`
-  `    <dict>`
-  `      <key>openweathermap.org</key>`
-  `      <dict>`
-  `         <key>NSIncludesSubdomains</key>`
-  `         <true/>`
-  `         <key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>`
-  `         <true/>`
-  `      </dict>`
-  `   </dict>`
-  ` </dict>`
+  ```XML
+    <key>NSAppTransportSecurity</key>
+    <dict>
+      <key>NSExceptionDomains</key>
+      <dict>
+        <key>openweathermap.org</key>
+        <dict>
+           <key>NSIncludesSubdomains</key>
+           <true/>
+           <key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+           <true/>
+        </dict>
+      </dict>
+    </dict>
+  ```
