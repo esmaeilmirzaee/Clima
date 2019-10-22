@@ -47,7 +47,7 @@ The entire process to create current application is as follows:
 14. write function `didUpdateLocations`
   * check last location in `locations` variable
   * if it owns higher value than 0 then get 'longitude' and 'latitude' variable
-  * stopUpdatingLocation()
+  * `stopUpdatingLocation()` and set `locationManager.delegate` to `nil`
 15. write function `didFailWithError`
   - print error
   - inform user by updating cityLabel with 'Location's unavailable'
@@ -56,4 +56,14 @@ The entire process to create current application is as follows:
 18. cal getWeatherData and provide `url` and `parameters` for it
 19. import `Alamofire` and `SwiftyJSON`
 20. complete `Alamofire.request(url, method: .get, parameters: parameters).responseJSON {}`
-21. 
+21. then check the if `response.result` is success or failure
+22. save the `response.result.value` in an unwraped variable as a JSON type
+23. create a class named `WeatherDataModel` and declare variables as the following list
+|----|----|----|----|
+|let|name|type|value|
+|----|----|----|----|
+|var|temperature|int|0|
+|var|condition|int|0|
+|var|city|String|""|
+|var|weatherIconName|String|""|
+|----|----|----|
