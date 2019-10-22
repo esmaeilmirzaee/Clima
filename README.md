@@ -46,10 +46,14 @@ The entire process to create current application is as follows:
   ```
 14. write function `didUpdateLocations`
   * check last location in `locations` variable
-  * if it owns higher value than 0 then get 'longitute' and 'latetitude' variable
+  * if it owns higher value than 0 then get 'longitude' and 'latitude' variable
   * stopUpdatingLocation()
 15. write function `didFailWithError`
   - print error
   - inform user by updating cityLabel with 'Location's unavailable'
 16. call `startUpdatingLocation` function in `viewDidLoad` function
-17. 
+17. create a params dictionary variable and save latitude, longitude and appid in it.
+18. cal getWeatherData and provide `url` and `parameters` for it
+19. import `Alamofire` and `SwiftyJSON`
+20. complete `Alamofire.request(url, method: .get, parameters: parameters).responseJSON {}`
+21. 
