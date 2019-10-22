@@ -41,7 +41,11 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if (locations[locations.count - 1]).horizontalAccuracy > 0 {
             locationManager.stopUpdatingLocation()
-            print("Long: \(locations[locations.count - 1].coordinate.longitude); Lat: \(locations[locations.count - 1].coordinate.latitude)")
+            print("Lon: \(locations[locations.count - 1].coordinate.longitude); Lat: \(locations[locations.count - 1].coordinate.latitude)")
+            let params: [String : String] = [
+                "lat":"\((locations[locations.count - 1]).coordinate.latitude)",
+                "lon":"\((locations[locations.count - 1]).coordinate.longitude)",
+                "appid":APP_ID]
         }
         
     }
