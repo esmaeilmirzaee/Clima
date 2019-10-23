@@ -66,4 +66,5 @@ The entire process to create current application is as follows:
 |var|condition|int|0|
 |var|city|String|""|
 |var|weatherIconName|String|""|
-|----|----|----|
+
+24.
