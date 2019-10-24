@@ -56,7 +56,9 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
   //MARK: - JSON parsing
   //updateWeatherData
   func updateWeatherData(json: JSON) {
-    let tempResult = json["main"]["temp"].doubleValue - 243
+    weatherDataModel.temperature = Int(json["main"]["temp"].doubleValue - 273.15)
+    weatherDataModel.city = json["name"].stringValue
+    weatherDataModel.condition = json["weather"][0]["id"].intValue
   }
   
   //MARK: - Location manager delegate methods

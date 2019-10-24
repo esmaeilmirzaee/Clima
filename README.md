@@ -60,11 +60,12 @@ The entire process to create current application is as follows:
 22. save the `response.result.value` in an unwraped variable as a JSON type
 23. create a class named `WeatherDataModel` and declare variables as the following list
 
-|let|name|type|value|
-|----|----|----|----|
+|**let/var**|**name**|**type**|**value**|
+|----|----|----|:----:|
 |var|temperature|int|0|
 |var|condition|int|0|
 |var|city|String|""|
 |var|weatherIconName|String|""|
 
-24.
+24. add a function named `updateWeatherIcon` which implements a `switch` statement to convert code to an icon.
+25. 
