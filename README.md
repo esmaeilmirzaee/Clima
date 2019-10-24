@@ -68,4 +68,4 @@ The entire process to create current application is as follows:
 |var|weatherIconName|String|""|
 
 24. also add a function named `updateWeatherIcon` which implements a `switch` statement to convert code to an icon.
-25. 
+25. call the `updateUIWithWeatherData` function and set the available data.
