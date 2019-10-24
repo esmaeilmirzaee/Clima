@@ -56,9 +56,23 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
   //MARK: - JSON parsing
   //updateWeatherData
   func updateWeatherData(json: JSON) {
-    weatherDataModel.temperature = Int(json["main"]["temp"].doubleValue - 273.15)
-    weatherDataModel.city = json["name"].stringValue
-    weatherDataModel.condition = json["weather"][0]["id"].intValue
+    if let temperature = json["main"]["temp"].double {
+      weatherDataModel.temperature = Int(temperature - 273.15)
+      weatherDataModel.city = json["name"].stringValue
+      weatherDataModel.condition = json["weather"][0]["id"].intValue
+      weatherDataModel.weatherIconName = weatherDataModel.updateWeatherIcon(condition: weatherDataModel.condition)
+      updateUIWithWeatherData()
+    } else {
+      cityLabel.text = "Weather's unavilable."
+    }
+  }
+  
+  //MARK: - UI Updates
+  //updateUIWithWeatherData
+  func updateUIWithWeatherData() {
+    cityLabel.text = weatherDataModel.city
+    temperatureLabel.text = "\(weatherDataModel.temperature)º"
+    weatherIcon.image = UIImage(named: weatherDataModel.weatherIconName)
   }
   
   //MARK: - Location manager delegate methods
@@ -75,13 +89,14 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         "appid":APP_ID]
       getWeatherData(url: WEATHER_URL, parameters: params)
     }
-    
   }
+  
   //didFailWithError method
   func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
     print(error)
     cityLabel.text = "Location's unavailable 😫"
   }
+  
   //MARK: - Change city delegate methods
   //userEnteredANewCityName method
   //Prepare for segue method

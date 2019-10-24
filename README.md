@@ -67,5 +67,5 @@ The entire process to create current application is as follows:
 |var|city|String|""|
 |var|weatherIconName|String|""|
 
-24. add a function named `updateWeatherIcon` which implements a `switch` statement to convert code to an icon.
+24. also add a function named `updateWeatherIcon` which implements a `switch` statement to convert code to an icon.
 25. 
