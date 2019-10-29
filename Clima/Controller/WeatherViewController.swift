@@ -42,6 +42,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
   //MARK: - Networking
   func getWeatherData(url: String, parameters: [String : String]) {
     Alamofire.request(url, method: .get, parameters: parameters).responseJSON { response in
+      print(response)
       if response.result.isSuccess {
         print("Success! The data has been collected.")
         if let weatherJSON: JSON = JSON(response.result.value) {
@@ -103,6 +104,10 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
   //userEnteredANewCityName method
   func userEnteredANewCityName(city: String) {
     print(city)
+    locationManager.stopUpdatingLocation()
+    locationManager.delegate = nil
+    let params = ["q" : city, "appid" : APP_ID]
+    getWeatherData(url: WEATHER_URL, parameters: params)
   }
   
   //Prepare for segue method

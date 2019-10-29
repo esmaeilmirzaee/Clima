@@ -69,3 +69,6 @@ The entire process to create current application is as follows:
 
 24. also add a function named `updateWeatherIcon` which implements a `switch` statement to convert code to an icon.
 25. call the `updateUIWithWeatherData` function and set the available data.
+26. **Navigating Data Between View Controller**s. In `ChangeCityViewController` declare a protocol and define `userEnteredANewCityName` function that requires a string value. *NOTE* definition must be before the class definition.
+27. declare an optional `delegate` variable.
+28. in `getWeatherPressed` function, assign the 
