@@ -69,7 +69,11 @@ The entire process to create current application is as follows:
 
 24. also add a function named `updateWeatherIcon` which implements a `switch` statement to convert code to an icon.
 25. call the `updateUIWithWeatherData` function and set the available data.
-26. **Navigating Data Between View Controller**s. In `ChangeCityViewController` declare a protocol and define `userEnteredANewCityName` function that requires a string value. *NOTE* definition must be before the class definition.
-27. declare an optional `delegate` variable. **NOTE** *by convention the name of this variable is `delegate`.*
+26. **Navigating Data Between View Controller**s. In `ChangeCityViewController` declare a protocol and define `userEnteredANewCityName` function that requires a string value. **NOTE** *definition must be before the class definition.*
+27. declare an optional `delegate` variable of the created protocol. **NOTE** *by convention the name of this variable is `delegate`.*
 28. in `getWeatherPressed` function, assign the text of text field to a variable and if it's not `nil` call the `userEneteredANewCityName` function by passing city name on `delegate` variable.
 29. dismiss the current view controller by calling `self.dismiss(animated: true, completion: nil)` function.
+30. in `WeatherViewController`, confirm to inherite `ChangeCityDelegate`.
+31. implement `goToChangeCityViewControllerButtonPressed` by calling `performSegue(withIdentifie: "identifier's name", sender: self)`.
+32. implement change city view delegate method, define a dictionary variable and store `"q"` as a city name and app_id. Then call `getWeatherData`.
+33. override `prepare` function for segue and check if the `segue.identifier` is equal to segue's name then create `segue.destination` a `viewcontroller` variable `as!` `ChangeCityViewController` and then assign its delegate to `self`
