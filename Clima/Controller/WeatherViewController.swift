@@ -25,6 +25,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
   @IBOutlet weak var temperatureLabel: UILabel!
   @IBOutlet weak var weatherIcon: UIImageView!
   @IBOutlet weak var cityLabel: UILabel!
+  @IBOutlet weak var switchButton: UISwitch!
   
   
   override func viewDidLoad() {
@@ -120,6 +121,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
     locationManager.stopUpdatingLocation()
     locationManager.delegate = nil
     let params = ["q" : city, "appid" : APP_ID]
+    switchButton.setOn(true, animated: true)
     getWeatherData(url: WEATHER_URL, parameters: params)
   }
   
@@ -128,6 +130,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
     if segue.identifier == "changeCityName" {
       let destinationVC = segue.destination as! ChangeCityViewController
       destinationVC.delegate = self
+      
     }
   }
 }
