@@ -37,6 +37,15 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
   
   
   @IBAction func fahrenheitToCelsius(_ sender: UISwitch) {
+    if sender.isOn {
+      weatherDataModel.temperature = weatherDataModel.baseTemperature
+      updateUIWithWeatherData()
+    } else {
+      let fahrenheit = (weatherDataModel.baseTemperature - 32) * 5 / 9
+      weatherDataModel.temperature = fahrenheit
+      print(fahrenheit)
+      updateUIWithWeatherData()
+    }
   }
   
   @IBAction func goToChangeCityViewControllerButtonPressed(_ sender: UIButton) {
@@ -54,7 +63,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
           self.updateWeatherData(json: weatherJSON)
         }
       } else {
-        print("\(response.result.error)")
+        print("\(String(describing: response.result.error))")
         self.cityLabel.text = "Connection Issue 🥺"
       }
     }
@@ -64,7 +73,8 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
   //updateWeatherData
   func updateWeatherData(json: JSON) {
     if let temperature = json["main"]["temp"].double {
-      weatherDataModel.temperature = Int(temperature - 273.15)
+      weatherDataModel.baseTemperature = Int(temperature - 273.15)
+      weatherDataModel.temperature = weatherDataModel.baseTemperature
       weatherDataModel.city = json["name"].stringValue
       weatherDataModel.condition = json["weather"][0]["id"].intValue
       weatherDataModel.weatherIconName = weatherDataModel.updateWeatherIcon(condition: weatherDataModel.condition)
@@ -78,7 +88,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
   //updateUIWithWeatherData
   func updateUIWithWeatherData() {
     cityLabel.text = weatherDataModel.city
-    temperatureLabel.text = "\(weatherDataModel.temperature)º"
+    temperatureLabel.text = "\(weatherDataModel.temperature)"
     weatherIcon.image = UIImage(named: weatherDataModel.weatherIconName)
   }
   
