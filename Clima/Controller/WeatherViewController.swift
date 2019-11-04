@@ -35,6 +35,10 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
     locationManager.startUpdatingLocation()
   }
   
+  
+  @IBAction func fahrenheitToCelsius(_ sender: UISwitch) {
+  }
+  
   @IBAction func goToChangeCityViewControllerButtonPressed(_ sender: UIButton) {
     performSegue(withIdentifier: "changeCityName", sender: self)
   }
@@ -103,7 +107,6 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
   //MARK: - Change city delegate methods
   //userEnteredANewCityName method
   func userEnteredANewCityName(city: String) {
-    print(city)
     locationManager.stopUpdatingLocation()
     locationManager.delegate = nil
     let params = ["q" : city, "appid" : APP_ID]

@@ -50,13 +50,13 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="C11-fU-d6q" userLabel="Weather Condition Image View">
                                         <rect key="frame" x="16" y="129" width="343" height="229"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Loading..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ssc-Cu-XmK" userLabel="City Label">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Loading..." lineBreakMode="tailTruncation" numberOfLines="30" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Ssc-Cu-XmK" userLabel="City Label">
                                         <rect key="frame" x="16" y="356" width="269" height="94"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="269" id="JU0-xy-RBy"/>
                                             <constraint firstAttribute="height" constant="94" id="bSX-HH-pWl"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="33"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <color key="textColor" red="1" green="0.99997437000274658" blue="0.99999129772186279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -73,18 +73,47 @@
                                     <constraint firstItem="Ssc-Cu-XmK" firstAttribute="top" secondItem="C11-fU-d6q" secondAttribute="bottom" constant="2" id="xht-1J-4cs"/>
                                 </constraints>
                             </view>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="6Zp-fc-PnY">
+                                <rect key="frame" x="60" y="8" width="51" height="31"/>
+                                <connections>
+                                    <action selector="fahrenheitToCelsius:" destination="vXZ-lx-hvc" eventType="valueChanged" id="GFv-bY-7Gn"/>
+                                </connections>
+                            </switch>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="f-c" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dla-2Y-UJ9">
+                                <rect key="frame" x="16" y="8" width="128" height="0.0"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small" weight="heavy"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="℉" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MtS-5p-EKC">
+                                <rect key="frame" x="34" y="8.5" width="24" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" systemColor="systemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="℃" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5nT-qS-ODl">
+                                <rect key="frame" x="111" y="8.5" width="28" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" systemColor="systemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="5nT-qS-ODl" firstAttribute="centerY" secondItem="MtS-5p-EKC" secondAttribute="centerY" id="38s-Sw-VqC"/>
                             <constraint firstItem="E0h-aX-oBb" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="7vB-96-MsA"/>
                             <constraint firstItem="E0h-aX-oBb" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="CN9-ZE-mQk"/>
+                            <constraint firstItem="6Zp-fc-PnY" firstAttribute="centerY" secondItem="MtS-5p-EKC" secondAttribute="centerY" id="INh-R6-PQG"/>
                             <constraint firstItem="th1-Kr-XgW" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="OCL-NQ-UMw"/>
+                            <constraint firstItem="6Zp-fc-PnY" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="8" id="TfH-pt-N3u"/>
+                            <constraint firstItem="6Zp-fc-PnY" firstAttribute="leading" secondItem="MtS-5p-EKC" secondAttribute="trailing" constant="2" id="YVL-ut-hfD"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="VNR-V6-HMc" secondAttribute="bottom" constant="20" id="Z6J-2F-fG1"/>
                             <constraint firstAttribute="trailing" secondItem="E0h-aX-oBb" secondAttribute="trailing" id="hub-6C-cfa"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="E0h-aX-oBb" secondAttribute="bottom" id="iES-6G-TkF"/>
                             <constraint firstItem="VNR-V6-HMc" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="l5f-UK-c3f"/>
                             <constraint firstItem="th1-Kr-XgW" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="mHS-yD-ZBh"/>
                             <constraint firstAttribute="trailing" secondItem="VNR-V6-HMc" secondAttribute="trailing" id="nWN-M1-3ds"/>
+                            <constraint firstItem="5nT-qS-ODl" firstAttribute="leading" secondItem="6Zp-fc-PnY" secondAttribute="trailing" constant="2" id="o9q-DS-Kce"/>
+                            <constraint firstItem="MtS-5p-EKC" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="18" id="sAP-SR-9vP"/>
                         </constraints>
                     </view>
                     <connections>
@@ -96,7 +125,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="17" y="259"/>
+            <point key="canvasLocation" x="16.800000000000001" y="258.62068965517244"/>
         </scene>
         <!--Change City View Controller-->
         <scene sceneID="9fV-L8-Kpp">
@@ -187,6 +216,7 @@
     <resources>
         <image name="background" width="500" height="755"/>
         <image name="cityBackground" width="600" height="399.5"/>
+        <image name="f-c" width="512" height="512"/>
         <image name="left" width="32" height="32"/>
         <image name="switch" width="64" height="64"/>
     </resources>
